@@ -1,0 +1,27 @@
+{
+  "name": "screen-reader-speak.js",
+  "version": "1.0.0",
+  "description": "Accessibility for Screen Reader to speak",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "npx jest --coverage"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.17",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "jest": "^24.9.0",
+    "jest-environment-jsdom-fourteen": "^1.0.1"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom-fourteen",
+    "testEnvironmentOptions": {
+      "resources": "usable"
+    }
+  }
+}

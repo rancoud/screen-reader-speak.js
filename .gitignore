@@ -1,0 +1,9 @@
+# IntelliJ
+.idea
+*.iml
+
+# Node modules
+node_modules
+
+# Jest
+coverage
