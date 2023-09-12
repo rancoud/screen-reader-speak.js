@@ -6,7 +6,7 @@ describe("screen-reader-speak", function(){
     beforeEach(function() {
         document.body.innerHTML = `<html lang="en"><body></body></html>`;
         jest.spyOn(Date, "now").mockImplementation(() => dateNow);
-        require("../src/screen-reader-speak");
+        require("../dist/screen-reader-speak.min");
     });
 
     function getFirstDivInBody() {
