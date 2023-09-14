@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Install modules
         run: npm install
@@ -18,7 +18,7 @@ jobs:
         run: npm test
 
       - name: Upload coverage
-        uses: codecov/codecov-action@v2.1.0
+        uses: codecov/codecov-action@v3
         if: success()
         with:
          token: ${{ secrets.CODECOV_TOKEN }}
