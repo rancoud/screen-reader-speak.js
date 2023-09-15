@@ -54,7 +54,7 @@ function insertDivInDom(priority) {
  * @returns {string} the priority for screen reader to read text
  */
 function getPriority(priority) {
-    var props = ["off", "polite", "assertive"];
+    var props = ["off", "polite", "assertive", "test to delete"];
     var idxProp = 0;
     var maxProps = props.length;
     var priorityToMatch = priority.toLowerCase();
