@@ -1,8 +1,7 @@
 # screen-reader-speak.js
 
-[![Test workflow](https://img.shields.io/github/workflow/status/rancoud/screen-reader-speak.js/tests?label=tests&logo=github)](https://github.com/rancoud/screen-reader-speak.js/actions?workflow=tests)
+[![Test workflow](https://img.shields.io/github/actions/workflow/status/rancoud/screen-reader-speak.js/test.yml?branch=master)](https://github.com/rancoud/screen-reader-speak.js/actions/workflows/test.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/rancoud/screen-reader-speak.js?logo=codecov)](https://codecov.io/gh/rancoud/screen-reader-speak.js)
-
 Accessibility for Screen Reader to speak.  
 Based on the work of [Orange a11y guidelines](https://a11y-guidelines.orange.com/fr/web/exemples-de-composants/faire-parler-le-lecteur-d-ecran/)
 
@@ -56,4 +55,8 @@ Because it adds a div in DOM, I suggest this css to hide it.
 ```
 
 ## How to Dev
-`npm test` for test and coverage
+`npm test` for test and coverage  
+`npm run build` for create build folder + js file + js file minified + tests on each js files  
+`npm run jsdoc` for documentation  
+`npm run eslint` for lint in terminal  
+`npm run eslint-export` for lint exported in HTML file

@@ -7,3 +7,9 @@ node_modules
 
 # Jest
 coverage
+
+# JSDoc
+jsdoc
+
+# eslint
+eslint_out.html
