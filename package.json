@@ -2,15 +2,14 @@
   "name": "screen-reader-speak.js",
   "version": "1.0.0",
   "description": "Accessibility for Screen Reader to speak",
-  "main": "",
   "scripts": {
     "test": "npx jest --coverage -- tests/screen-reader-speak.test.js",
-    "build": "mkdir -p dist && node -e \"const fs = require('fs'); let data = fs.readFileSync('src/screen-reader-speak.js'); data = ';(function(){\\n\\\"use strict\\\";\\n' + data + '}());'; fs.writeFileSync('dist/screen-reader-speak.js', data);\" && uglifyjs src/*.js -m -e --webkit -c sequences,dead_code,conditionals,booleans,unused,if_return,join_vars,drop_console,negate_iife=false -o dist/screen-reader-speak.min.js && node -e \"const fs = require('fs'); let data = fs.readFileSync('dist/screen-reader-speak.min.js'); data = ';(function(){\\\"use strict\\\";' + data + '}());'; fs.writeFileSync('dist/screen-reader-speak.min.js', data);\" && npx jest",
+    "build": "mkdir -p dist && node -e \"const fs = require('fs'); let data = fs.readFileSync('src/screen-reader-speak.js'); data = ';(function(){\\n\\\"use strict\\\";\\n' + data + '}());'; fs.writeFileSync('dist/screen-reader-speak.js', data);\" && uglifyjs src/*.js -m -e --webkit -c -o dist/screen-reader-speak.min.js && node -e \"const fs = require('fs'); let data = fs.readFileSync('dist/screen-reader-speak.min.js'); data = ';(function(){\\\"use strict\\\";' + data + '}());'; fs.writeFileSync('dist/screen-reader-speak.min.js', data);\"",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "eslint": "npx eslint src/*.js",
     "eslint-export": "npx eslint src/*.js -f html > eslint_out.html"
   },
-  "author": "",
+  "author": "Rancoud",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.22.17",
@@ -19,6 +18,10 @@
     "jest-environment-jsdom": "29.7.0",
     "jsdoc": "4.0.2",
     "uglify-js": "3.17.4"
+  },
+  "engines" : {
+    "npm" : ">=9.8.1",
+    "node" : ">=20.6.1"
   },
   "jest": {
     "testEnvironment": "jsdom",
