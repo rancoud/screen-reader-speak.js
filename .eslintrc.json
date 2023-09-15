@@ -1,16 +1,18 @@
 {
     "env": {
-        "browser": true
+        "browser": true,
+        "jest": true
     },
     "globals": {
         "Promise": "off"
     },
-    "extends": "eslint:all",
+    "extends": ["eslint:all", "plugin:jest/recommended"],
     "parserOptions": {
         "ecmaVersion": 5
     },
     "plugins": [
-        "jsdoc"
+        "jsdoc",
+        "jest"
     ],
     "rules": {
         "array-element-newline": ["error", "consistent"],

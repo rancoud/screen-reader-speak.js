@@ -3,25 +3,28 @@
   "version": "1.0.0",
   "description": "Accessibility for Screen Reader to speak",
   "scripts": {
-    "test": "npx jest --coverage -- tests/screen-reader-speak.test.js",
-    "build": "mkdir -p dist && node -e \"const fs = require('fs'); let data = fs.readFileSync('src/screen-reader-speak.js'); data = ';(function(){\\n\\\"use strict\\\";\\n' + data + '}());'; fs.writeFileSync('dist/screen-reader-speak.js', data);\" && uglifyjs src/*.js -m -e --webkit -c -o dist/screen-reader-speak.min.js && node -e \"const fs = require('fs'); let data = fs.readFileSync('dist/screen-reader-speak.min.js'); data = ';(function(){\\\"use strict\\\";' + data + '}());'; fs.writeFileSync('dist/screen-reader-speak.min.js', data);\"",
+    "test": "jest --coverage --coverageDirectory=./coverage -- tests/screen-reader-speak.test.js",
+    "build": "ncc build -m --target=es5 src/*.js",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
-    "eslint": "npx eslint src/*.js",
-    "eslint-export": "npx eslint src/*.js -f html > eslint_out.html"
+    "eslint": "eslint --max-warnings=0 src/*.js",
+    "eslint:fix": "eslint --fix src/*.js"
   },
   "author": "Rancoud",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.22.17",
+    "@vercel/ncc": "0.38.0",
+    "eslint": "8.48.0",
+    "eslint-plugin-jest": "27.2.3",
     "eslint-plugin-jsdoc": "46.6.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jsdoc": "4.0.2",
     "uglify-js": "3.17.4"
   },
-  "engines" : {
-    "npm" : ">=9.8.1",
-    "node" : ">=20.6.1"
+  "engines": {
+    "npm": ">=9.8.1",
+    "node": ">=20.6.1"
   },
   "jest": {
     "testEnvironment": "jsdom",
