@@ -55,8 +55,8 @@ Because it adds a div in DOM, I suggest this css to hide it.
 ```
 
 ## How to Dev
-`npm test` for test and coverage  
-`npm run build` for create build folder + js file + js file minified + tests on each js files  
-`npm run jsdoc` for documentation  
-`npm run eslint` for lint in terminal  
-`npm run eslint-export` for lint exported in HTML file
+`npm test` or `docker buildx bake test` to test and coverage  
+`npm run build` or `docker buildx bake build` to create dist js file minified  
+`npm run jsdoc` or `docker buildx bake jsdoc` to generate documentation  
+`npm run eslint` or `docker buildx bake lint` to run eslint  
+`npm run eslint:fix` to run eslint and fix files
