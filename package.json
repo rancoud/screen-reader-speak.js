@@ -12,7 +12,7 @@
   "author": "Rancoud",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.22.17",
+    "@babel/core": "^7.22.20",
     "eslint": "^8.49.0",
     "eslint-plugin-jest": "^27.2.3",
     "eslint-plugin-jsdoc": "^46.6.0",
