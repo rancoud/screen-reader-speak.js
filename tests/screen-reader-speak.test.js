@@ -1,11 +1,10 @@
-jest.useFakeTimers();
+const dateNow = 1479427200000;
+
+jest.useFakeTimers({now: dateNow});
 
 describe("screen-reader-speak", function(){
-    const dateNow = 1479427200000;
-
     beforeEach(function() {
         document.body.innerHTML = `<html lang="en"><body></body></html>`;
-        jest.spyOn(Date, "now").mockImplementation(() => dateNow);
         require("../src/screen-reader-speak");
     });
 
@@ -13,13 +12,11 @@ describe("screen-reader-speak", function(){
         return document.getElementsByTagName("div")[0];
     }
 
-    it("should be defined", function(done) {
+    it("should be defined", () => {
         expect(window.screenReaderSpeak).toBeDefined();
-
-        done();
     });
 
-    it("should add div in body", function(done) {
+    it("should add div in body", () => {
         let err = window.screenReaderSpeak("sample");
         expect(err).toBeUndefined();
 
@@ -30,11 +27,9 @@ describe("screen-reader-speak", function(){
         expect(div.getAttribute("id")).toBe("speak-" + dateNow);
         expect(div.getAttribute("class")).toBe("sr-only");
         expect(div.innerHTML).toBe("");
-
-        done();
     });
 
-    it("should add text in div after 100ms", function(done) {
+    it("should add text in div after 100ms", () => {
         let err = window.screenReaderSpeak("sample 100ms");
         expect(err).toBeUndefined();
 
@@ -46,11 +41,9 @@ describe("screen-reader-speak", function(){
         expect(div.getAttribute("id")).toBe("speak-" + dateNow);
         expect(div.getAttribute("class")).toBe("sr-only");
         expect(div.innerHTML).toBe("sample 100ms");
-
-        done();
     });
 
-    it("should delete div in body after 1000ms", function(done) {
+    it("should delete div in body after 1000ms", () => {
         let err = window.screenReaderSpeak("sample 1000ms");
         expect(err).toBeUndefined();
 
@@ -62,11 +55,9 @@ describe("screen-reader-speak", function(){
         jest.clearAllTimers();
 
         expect(getFirstDivInBody()).toBeUndefined();
-
-        done();
     });
 
-    it("should return TypeError for text argument", function(done) {
+    it("should return TypeError for text argument", () => {
         let err;
 
         err = window.screenReaderSpeak(1);
@@ -113,11 +104,9 @@ describe("screen-reader-speak", function(){
         expect(err).toBeInstanceOf(TypeError);
         expect(err.message).toBe("Invalid argument text, expect string, get function");
         jest.clearAllTimers();
-
-        done();
     });
 
-    it("should return TypeError for priority argument", function(done) {
+    it("should return TypeError for priority argument", () => {
         let err;
         let div;
 
@@ -173,27 +162,23 @@ describe("screen-reader-speak", function(){
         expect(err).toBeInstanceOf(TypeError);
         expect(err.message).toBe("Invalid argument priority, expect string, get function");
         jest.clearAllTimers();
-
-        done();
     });
 
-    it("should block xss html", function(done) {
-        let err = window.screenReaderSpeak("<img src='x' onerror='alert(1)'>");
+    it("should block xss html", () => {
+        let err = window.screenReaderSpeak("<img src='x' onerror='alert(1)' alt=''>");
         expect(err).toBeUndefined();
 
         jest.advanceTimersByTime(100);
         const div = getFirstDivInBody();
-        expect(div.innerHTML).toBe("&lt;img src='x' onerror='alert(1)'&gt;");
+        expect(div.innerHTML).toBe("&lt;img src='x' onerror='alert(1)' alt=''&gt;");
 
         jest.advanceTimersByTime(1000);
         jest.clearAllTimers();
 
         expect(getFirstDivInBody()).toBeUndefined();
-
-        done();
     });
 
-    it("should use correct aria-live values", function(done) {
+    it("should use correct aria-live values", () => {
         let err;
         let div;
 
@@ -238,11 +223,9 @@ describe("screen-reader-speak", function(){
         expect(div.getAttribute("aria-live")).toBe("polite");
         document.body.innerHTML = `<html lang="en"><body></body></html>`;
         jest.clearAllTimers();
-
-        done();
     });
 
-    it("should not throw error when manipulate dom after purged", function(done) {
+    it("should not throw error when manipulate dom after purged", () => {
         let err = window.screenReaderSpeak("");
         expect(err).toBeUndefined();
 
@@ -250,11 +233,9 @@ describe("screen-reader-speak", function(){
 
         jest.advanceTimersByTime(100);
         jest.advanceTimersByTime(1000);
-
-        done();
     });
 
-    it("should not throw error when manipulate dom after having undefined document.body + should do return ReferenceError when having no document.body", function(done) {
+    it("should not throw error when manipulate dom after having undefined document.body + should do return ReferenceError when having no document.body", () => {
         let err = window.screenReaderSpeak("");
         expect(err).toBeUndefined();
 
@@ -270,7 +251,5 @@ describe("screen-reader-speak", function(){
         expect(err).toBeInstanceOf(ReferenceError);
         expect(err.message).toBe("document.body not exist");
         jest.clearAllTimers();
-
-        done();
     });
 });

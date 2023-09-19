@@ -6,13 +6,14 @@
     "test": "jest --coverage --coverageDirectory=./coverage -- tests/screen-reader-speak.test.js",
     "build": "node build.js && uglifyjs dist/screen-reader-speak.js --mangle --webkit --compress \"drop_console=true,passes=5\" -o dist/screen-reader-speak.min.js && jest",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
-    "eslint": "eslint --max-warnings=0 src/*.js",
-    "eslint:fix": "eslint --fix src/*.js"
+    "eslint": "eslint --max-warnings=0 src/*.js tests/*.js",
+    "eslint:fix": "eslint --fix src/*.js tests/*.js"
   },
   "author": "Rancoud",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.22.20",
+    "@types/jest": "^29.5.5",
     "eslint": "^8.49.0",
     "eslint-plugin-jest": "^27.4.0",
     "eslint-plugin-jsdoc": "^46.8.1",
