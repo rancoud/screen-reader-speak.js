@@ -67,3 +67,11 @@ RUN --mount=type=bind,target=.,rw \
 
 FROM scratch AS test-coverage
 COPY --from=test /tmp/coverage /
+
+FROM deps AS jsdoc
+RUN --mount=type=bind,target=.,rw \
+  --mount=type=cache,target=/src/node_modules \
+  npm run jsdoc && cp -r ./jsdoc /tmp
+
+FROM scratch AS jsdoc-update
+COPY --from=jsdoc /tmp/jsdoc /

@@ -1,6 +1,8 @@
 /**
  * Main entry.
  *
+ * @function screenReaderSpeak
+ * @global
  * @param {string} text       - text to read for screen reader
  * @param {string} [priority] - the priority for screen reader to read text
  * @returns {undefined|TypeError|ReferenceError} TypeError is returned when `text` or `priority` argument is invalid.
@@ -31,6 +33,8 @@ function screenReaderSpeak(text, priority) {
 /**
  * Creates a div with priority and inserts it in dom.
  *
+ * @function insertDivInDom
+ * @private
  * @param {string} priority - the priority for screen reader to read text
  * @returns {string} id of the div following that pattern: `speak-` + Date.now()
  */
@@ -50,6 +54,8 @@ function insertDivInDom(priority) {
 /**
  * Search valid value for priority, fallback is `polite`.
  *
+ * @function getPriority
+ * @private
  * @param {string} priority - the priority for screen reader to read text
  * @returns {string} the priority for screen reader to read text
  */
@@ -71,6 +77,8 @@ function getPriority(priority) {
 /**
  * Add text in div after 100ms.
  *
+ * @function addTextInDivAfter100ms
+ * @private
  * @param {string} id   - id of the div
  * @param {string} text - text to read for screen reader
  * @returns {undefined}
@@ -87,6 +95,8 @@ function addTextInDivAfter100ms(id, text) {
 /**
  * Remove div after 1000ms.
  *
+ * @function deleteDivAfter1000ms
+ * @private
  * @param {string} id - id of the div
  * @returns {undefined}
  */
@@ -98,5 +108,8 @@ function deleteDivAfter1000ms(id) {
         }
     }, 1000);
 }
+
+Object.freeze(screenReaderSpeak.prototype);
+Object.freeze(screenReaderSpeak);
 
 window.screenReaderSpeak = screenReaderSpeak;

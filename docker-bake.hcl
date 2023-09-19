@@ -52,3 +52,10 @@ target "test" {
   cache-nofilter = "test"
   output = ["./coverage"]
 }
+
+target "jsdoc" {
+  dockerfile = "dev.Dockerfile"
+  target = "jsdoc-update"
+  cache-nofilter = "jsdoc"
+  output = ["./jsdoc"]
+}
