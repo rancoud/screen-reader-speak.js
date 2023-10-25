@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>screen-reader-speak.js Demo</title>
+    <style>
+        /* Styling the page in general */
+        * {
+            font-family: sans-serif;
+        }
+
+        html {
+            background-color: #fff;
+            color: #000;
+            height: 100%;
+        }
+
+        html[data-theme=dark] {
+            background-color: #000;
+            color: #fff;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .header {
+            align-content: center;
+            align-items: center;
+            border-bottom: 1px solid grey;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .button-switch-theme {
+            padding: 5px;
+        }
+
+        .content {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        label {
+            display: inline-block;
+            min-width: 60px;
+        }
+
+        input[type=submit] {
+            margin-left: 64px;
+        }
+    </style>
+    <style>
+        /* Styling the page for screen-reader-speak.js */
+        .sr-only {
+            background-color: #eeeeee;
+            box-sizing: border-box;
+            height: 100%;
+            margin: 5px 0 0 0;
+            overflow: auto;
+            padding: 5px;
+            white-space: pre;
+            width: 100%;
+        }
+
+        html[data-theme=dark] .sr-only {
+            background-color: #2a2a2a;
+        }
+
+        code {
+            background-color: #eeeeee;
+            font-family: monospace;
+            padding: 0 5px;
+        }
+
+        html[data-theme=dark] code {
+            background-color: #2a2a2a;
+        }
+
+        samp {
+            background-color: #eeeeee;
+            font-family: monospace;
+            white-space: pre;
+        }
+
+        html[data-theme=dark] samp {
+            background-color: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>screen-reader-speak.js Demo</h1>
+        <button class="button-switch-theme" id="button-switch-theme" onclick="switchTheme();">Switch to Light Theme</button>
+    </div>
+    <div class="content">
+        <h3>Priority values used by screen reader</h3>
+        <ul>
+            <li><code>off</code>: the text will be read if user is currently focused on that region.</li>
+            <li><strong><code>polite</code> (default)</strong>: the text will be read at the end of the current sentence or when the user pauses typing.</li>
+            <li><code>assertive</code>: the text will be read immediately, causing an interruption.</li>
+        </ul>
+
+        <h3>Try it!</h3>
+        <form id="form-example">
+            <p>
+                <label for="text">Text</label>
+                <input id="text" type="text" />
+            </p>
+
+            <p>
+                <label for="priority">Priority</label>
+                <select id="priority">
+                    <option value="off">off</option>
+                    <option value="polite" selected="selected">polite</option>
+                    <option value="assertive">assertive</option>
+                </select>
+            </p>
+
+            <input type="submit" value="Speak">
+        </form>
+
+        <p>
+            Below you will see the div added and removed for the screen reader<br />
+            If you want to listen it, you need to run a screen reader.<br />
+            You are not supposed to see it on your website because you need to use that css:<br />
+<samp>
+    .sr-only {
+        border: 0;
+        clip: rect(0,0,0,0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+</samp>
+        </p>
+    </div>
+
+    <script src="../dist/screen-reader-speak.js"></script>
+
+    <script>
+        function switchTheme(e) {
+            var theme = document.querySelector("html").getAttribute("data-theme");
+            if (theme === "light") {
+                document.querySelector("html").setAttribute("data-theme", "dark");
+                document.getElementById("button-switch-theme").textContent = "Switch to Light Theme";
+            } else {
+                document.querySelector("html").setAttribute("data-theme", "light");
+                document.getElementById("button-switch-theme").textContent = "Switch to Dark Theme";
+            }
+        }
+    </script>
+    <script>
+        document.getElementById("form-example").addEventListener("submit", function formSubmit(event){
+            var text = document.getElementById("text").value;
+            var priority = document.getElementById("priority").value;
+
+            event.preventDefault();
+
+            window.screenReaderSpeak(text, priority);
+        });
+    </script>
+</body>
+</html>

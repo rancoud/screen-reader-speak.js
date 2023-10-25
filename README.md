@@ -5,6 +5,9 @@
 Accessibility for Screen Reader to speak.  
 Based on the work of [Orange a11y guidelines](https://a11y-guidelines.orange.com/fr/web/exemples-de-composants/faire-parler-le-lecteur-d-ecran/)
 
+## Demo
+You can check the [demo](https://github.rancoud.com/screen-reader-speak.js/index.html).
+
 ## Installation
 You need to download the js file from `dist` folder, then you can include it in your HTML.
 ````html
