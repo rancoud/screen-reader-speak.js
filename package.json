@@ -1,16 +1,17 @@
 {
   "name": "screen-reader-speak.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Accessibility for Screen Reader to speak",
   "scripts": {
     "test": "jest --coverage --coverageDirectory=./coverage -- tests/screen-reader-speak.test.js",
-    "build": "node build.js && uglifyjs dist/screen-reader-speak.js --mangle --webkit --compress \"drop_console=true,passes=5\" -o dist/screen-reader-speak.min.js && jest",
+    "build": "node build.js && uglifyjs dist/screen-reader-speak.js --mangle --webkit --compress \"drop_console=true,passes=5\" --comments \"/MIT License/\" -o dist/screen-reader-speak.min.js && jest",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "eslint": "eslint --max-warnings=0 src/*.js tests/*.js",
     "eslint:fix": "eslint --fix src/*.js tests/*.js"
   },
   "author": "Rancoud",
   "license": "MIT",
+  "homepage": "https://github.com/rancoud/screen-reader-speak.js",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@types/jest": "^29.5.6",
