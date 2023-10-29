@@ -10,9 +10,10 @@ const inputJSFiles = [
 // output JS file
 const outputJSFilename = 'dist/screen-reader-speak.js';
 
-const outputJSFileContent = concatJSFiles(inputJSFiles);
-const outputJSFileContentStripped = removeDebug(outputJSFileContent);
-saveFile(outputJSFilename, outputJSFileContentStripped);
+let outputJSFileContent = concatJSFiles(inputJSFiles);
+outputJSFileContent = removeDebug(outputJSFileContent);
+outputJSFileContent = addHeaderAndLicense(outputJSFileContent);
+saveFile(outputJSFilename, outputJSFileContent);
 
 // functions below
 
@@ -70,6 +71,24 @@ function removeDebug(content) {
             },
         }]
     }).code;
+}
+
+function addHeaderAndLicense(content) {
+    const license = fs.readFileSync('./LICENSE', 'utf8');
+    const pkg = require('./package.json');
+
+    let header = pkg.name + " (v" + pkg.version + ")\n" + pkg.homepage + "\n\n" + license;
+
+    const lines = header.split("\n");
+    for (let idx = 0, max = lines.length; idx < max; ++idx) {
+        if (idx + 1 !== max) {
+            lines[idx] = " * " + lines[idx];
+        } else {
+            lines[idx] = " */" + lines[idx];
+        }
+    }
+
+    return "/**\n" + lines.join("\n") + "\n" + content;
 }
 
 function saveFile(filename, content) {
