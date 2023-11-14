@@ -2,6 +2,7 @@
 
 [![Test workflow](https://img.shields.io/github/actions/workflow/status/rancoud/screen-reader-speak.js/test.yml?branch=main)](https://github.com/rancoud/screen-reader-speak.js/actions/workflows/test.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/rancoud/screen-reader-speak.js?logo=codecov)](https://codecov.io/gh/rancoud/screen-reader-speak.js)
+
 Accessibility for Screen Reader to speak.  
 Based on the work of [Orange a11y guidelines: Make a screen reader talk with JavaScript and ARIA](https://a11y-guidelines.orange.com/en/articles/make-a-screen-reader-talk/)
 
@@ -10,9 +11,9 @@ You can check the [demo](https://github.rancoud.com/screen-reader-speak.js/index
 
 ## Installation
 You need to download the js file from `dist` folder, then you can include it in your HTML.
-````html
+```html
 <script src="/screen-reader-speak.min.js"></script>
-````
+```
 
 ## How to use it?
 ```js
