@@ -26,4 +26,4 @@ jobs:
         name: Upload coverage
         uses: codecov/codecov-action@v3
         with:
-          file: ./coverage/clover.xml
+          file: ./coverage/lcov.info
