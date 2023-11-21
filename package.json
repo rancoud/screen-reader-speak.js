@@ -14,7 +14,7 @@
   "homepage": "https://github.com/rancoud/screen-reader-speak.js",
   "devDependencies": {
     "@babel/core": "^7.23.3",
-    "@types/jest": "^29.5.8",
+    "@types/jest": "^29.5.9",
     "eslint": "^8.54.0",
     "eslint-plugin-jest": "^27.6.0",
     "eslint-plugin-jsdoc": "^46.9.0",
