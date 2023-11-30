@@ -13,7 +13,7 @@
   "license": "MIT",
   "homepage": "https://github.com/rancoud/screen-reader-speak.js",
   "devDependencies": {
-    "@babel/core": "^7.23.3",
+    "@babel/core": "^7.23.5",
     "@types/jest": "^29.5.10",
     "eslint": "^8.54.0",
     "eslint-plugin-jest": "^27.6.0",
