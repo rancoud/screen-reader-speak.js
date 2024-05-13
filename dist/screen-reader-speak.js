@@ -27,9 +27,9 @@
 (function () {
   "use strict";
 
-  /** @type number */
+  /** @type {number} */
   var timeInMsBeforeAddingText = 100;
-  /** @type number */
+  /** @type {number} */
   var timeInMsBeforeRemovingDiv = 1000;
 
   /**
@@ -39,13 +39,13 @@
    * @global
    * @param {string} text       - text to read for screen reader
    * @param {string} [priority] - the priority for screen reader to read text
-   * @returns {undefined|TypeError|ReferenceError} TypeError is returned when `text` or `priority` argument is invalid.
+   * @returns {(undefined|TypeError|ReferenceError)} TypeError is returned when `text` or `priority` argument is invalid.
    * ReferenceError is returned when there is no document.body.
    */
   function screenReaderSpeak(text, priority) {
-    /** @type string */
+    /** @type {string} */
     var id;
-    /** @type string */
+    /** @type {string} */
     var priorityToUse;
 
     if (typeof text !== "string") {
@@ -77,9 +77,9 @@
    * @private
    */
   function insertDivInDom(priority) {
-    /** @type HTMLDivElement */
+    /** @type {HTMLDivElement} */
     var div = document.createElement("div");
-    /** @type string */
+    /** @type {string} */
     var id = "speak-" + Date.now();
 
     div.setAttribute("id", id);
@@ -100,13 +100,13 @@
    * @private
    */
   function getPriority(priority) {
-    /** @type string[] */
+    /** @type {string[]} */
     var props = ["off", "polite", "assertive"];
-    /** @type number */
+    /** @type {number} */
     var idxProp = 0;
-    /** @type number */
+    /** @type {number} */
     var maxProps = props.length;
-    /** @type string */
+    /** @type {string} */
     var priorityToMatch = priority.toLowerCase();
 
     for (; idxProp < maxProps; ++idxProp) {
@@ -129,7 +129,7 @@
    */
   function addTextInDivAfter100ms(id, text) {
     setTimeout(function setTextInDiv() {
-      /** @type {HTMLElement|null} */
+      /** @type {(HTMLElement|null)} */
       var elem = document.getElementById(id);
       if (elem) {
         elem.appendChild(document.createTextNode(text));
@@ -149,7 +149,7 @@
    */
   function deleteDivAfter1000ms(id) {
     setTimeout(function removeEntireDiv() {
-      /** @type {HTMLElement|null} */
+      /** @type {(HTMLElement|null)} */
       var elem = document.getElementById(id);
       if (document.body && elem) {
         document.body.removeChild(elem);
