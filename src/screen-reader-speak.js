@@ -10,7 +10,7 @@ var timeInMsBeforeRemovingDiv = 1000;
  * @global
  * @param {string} text       - text to read for screen reader
  * @param {string} [priority] - the priority for screen reader to read text
- * @returns {(undefined|TypeError|ReferenceError)} TypeError is returned when `text` or `priority` argument is invalid.
+ * @returns {(TypeError|ReferenceError|undefined)} TypeError is returned when `text` or `priority` argument is invalid.
  * ReferenceError is returned when there is no document.body.
  */
 function screenReaderSpeak(text, priority) {
