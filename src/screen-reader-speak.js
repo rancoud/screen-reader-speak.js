@@ -1,3 +1,8 @@
+/** @type number */
+var timeInMsBeforeAddingText = 100;
+/** @type number */
+var timeInMsBeforeRemovingDiv = 1000;
+
 /**
  * Main entry.
  *
@@ -9,8 +14,10 @@
  * ReferenceError is returned when there is no document.body.
  */
 function screenReaderSpeak(text, priority) {
-    var id = "";
-    var priorityToUse = "";
+    /** @type string */
+    var id;
+    /** @type string */
+    var priorityToUse;
 
     if (typeof text !== "string") {
         return new TypeError("Invalid argument text, expect string, get " + typeof text);
@@ -28,18 +35,22 @@ function screenReaderSpeak(text, priority) {
     id = insertDivInDom(priorityToUse);
     addTextInDivAfter100ms(id, text);
     deleteDivAfter1000ms(id);
+
+    return undefined;
 }
 
 /**
  * Creates a div with priority and inserts it in dom.
  *
  * @function insertDivInDom
- * @private
  * @param {string} priority - the priority for screen reader to read text
  * @returns {string} id of the div following that pattern: `speak-` + Date.now()
+ * @private
  */
 function insertDivInDom(priority) {
+    /** @type HTMLDivElement */
     var div = document.createElement("div");
+    /** @type string */
     var id = "speak-" + Date.now();
 
     div.setAttribute("id", id);
@@ -55,14 +66,18 @@ function insertDivInDom(priority) {
  * Search valid value for priority, fallback is `polite`.
  *
  * @function getPriority
- * @private
  * @param {string} priority - the priority for screen reader to read text
  * @returns {string} the priority for screen reader to read text
+ * @private
  */
 function getPriority(priority) {
+    /** @type string[] */
     var props = ["off", "polite", "assertive"];
+    /** @type number */
     var idxProp = 0;
+    /** @type number */
     var maxProps = props.length;
+    /** @type string */
     var priorityToMatch = priority.toLowerCase();
 
     for (; idxProp < maxProps; ++idxProp) {
@@ -78,35 +93,41 @@ function getPriority(priority) {
  * Add text in div after 100ms.
  *
  * @function addTextInDivAfter100ms
- * @private
  * @param {string} id   - id of the div
  * @param {string} text - text to read for screen reader
  * @returns {undefined}
+ * @private
  */
 function addTextInDivAfter100ms(id, text) {
     setTimeout(function setTextInDiv() {
+        /** @type {HTMLElement|null} */
         var elem = document.getElementById(id);
         if (elem) {
             elem.appendChild(document.createTextNode(text));
         }
-    }, 100);
+    }, timeInMsBeforeAddingText);
+
+    return undefined;
 }
 
 /**
  * Remove div after 1000ms.
  *
  * @function deleteDivAfter1000ms
- * @private
  * @param {string} id - id of the div
  * @returns {undefined}
+ * @private
  */
 function deleteDivAfter1000ms(id) {
     setTimeout(function removeEntireDiv() {
+        /** @type {HTMLElement|null} */
         var elem = document.getElementById(id);
         if (document.body && elem) {
             document.body.removeChild(elem);
         }
-    }, 1000);
+    }, timeInMsBeforeRemovingDiv);
+
+    return undefined;
 }
 
 Object.freeze(screenReaderSpeak.prototype);
