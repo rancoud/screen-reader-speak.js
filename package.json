@@ -1,6 +1,6 @@
 {
   "name": "screen-reader-speak.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Accessibility for Screen Reader to speak",
   "scripts": {
     "test": "jest --coverage --coverageDirectory=./coverage -- tests/screen-reader-speak.test.js",
