@@ -2,7 +2,7 @@ const dateNow = 1479427200000;
 
 jest.useFakeTimers({now: dateNow});
 
-describe("screen-reader-speak", function(){
+describe("screen-reader-speak", function() {
     beforeEach(function() {
         document.body.innerHTML = `<html lang="en"><body></body></html>`;
         require("../src/screen-reader-speak");
@@ -239,9 +239,9 @@ describe("screen-reader-speak", function(){
         let err = window.screenReaderSpeak("");
         expect(err).toBeUndefined();
 
-        Object.defineProperty(document, 'body', {
-            get: jest.fn().mockImplementation(() => { return ''; }),
-            set: jest.fn().mockImplementation(() => {}),
+        Object.defineProperty(document, "body", {
+            get: jest.fn().mockImplementation(() => { return ""; }),
+            set: jest.fn().mockImplementation(() => {})
         });
 
         jest.advanceTimersByTime(100);
