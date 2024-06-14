@@ -4,7 +4,7 @@
   "description": "Accessibility for Screen Reader to speak",
   "scripts": {
     "test": "jest --coverage --coverageDirectory=./coverage -- tests/screen-reader-speak.test.js",
-    "build": "node build.cjs && uglifyjs dist/screen-reader-speak.js --mangle --webkit --compress \"drop_console=true,passes=5\" --comments \"/MIT License/\" -o dist/screen-reader-speak.min.js && jest",
+    "build": "node build.cjs && uglifyjs dist/screen-reader-speak.js --mangle --webkit --compress \"drop_console=true,module=false,passes=5\" --comments \"/MIT License/\" -o dist/screen-reader-speak.min.js && jest",
     "jsdoc": "jsdoc -c jsdoc.conf.json",
     "eslint": "eslint --max-warnings=0 src/*.js tests/*.js",
     "eslint:fix": "eslint --fix src/*.js tests/*.js"
