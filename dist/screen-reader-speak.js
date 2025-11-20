@@ -1,5 +1,5 @@
 /**
- * screen-reader-speak.js (v1.0.3)
+ * screen-reader-speak.js (v1.0.5)
  * https://github.com/rancoud/screen-reader-speak.js
  * 
  * MIT License
